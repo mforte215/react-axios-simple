@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import axios from '../../axios';
+import axios from '../../../axios';
 
 import './FullPost.css';
 
@@ -10,7 +10,7 @@ class FullPost extends Component {
     }
 
     deletePostHanlder = () => {
-        axios.delete('/posts/' + this.props.id).then(
+        axios.delete('/posts/' + this.props.match.params.id).then(
             response => {
                 console.log('delete');
                 console.log(response);
@@ -19,12 +19,13 @@ class FullPost extends Component {
         );
     }
     
-    componentDidUpdate() {    
-        if(this.props.id){
-            if(!this.state.loadedPost || (this.state.loadedPost && this.state.loadedPost.id !== this.props.id)) {
+    componentDidMount() {
+        console.log(this.props.match.params.id);    
+        if(this.props.match.params.id){
+            if(!this.state.loadedPost || (this.state.loadedPost && this.state.loadedPost.id !== +this.props.match.params.id)) {
 
             
-            axios.get('/posts/' + this.props.id).then(
+            axios.get('/posts/' + this.props.match.params.id).then(
                 response => {
                     this.setState({loadedPost: response.data});
                 }
