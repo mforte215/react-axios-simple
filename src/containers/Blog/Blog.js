@@ -3,7 +3,7 @@ import Posts from '../Blog/Posts/Posts';
 import NewPost from '../Blog/NewPost/NewPost';
 import FullPost from '../../containers/Blog/FullPost/FullPost';
 import './Blog.css';
-import { Route, NavLink, Switch, Redirect } from 'react-router-dom';
+import { Route, NavLink, Switch } from 'react-router-dom';
 
 
 
